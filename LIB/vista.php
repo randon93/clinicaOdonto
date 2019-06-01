@@ -4,7 +4,7 @@
 class Vista {
 
   function __construct()  {
-    // code...
+    echo "<h1>VISTA PADRE</h1>";
   }
 
   public function render() {

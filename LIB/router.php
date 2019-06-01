@@ -23,10 +23,14 @@ class Router {
     $archivo = "CONTROLADOR/".$url[0]."Controlador.php";
     if ( file_exists($archivo) ) {
       require_once $archivo;
-      $ctr = new $url[0];
+      $nom = $url[0]."Controlador";
+      $ctr = new $nom;
+      $ctr->CrearModelo($url[0]);
+      $ctr->CrearVista();
     }else {
       require_once "CONTROLADOR/errorControlador.php";
-      $ctr = new errores();
+      $nom = "erroresControlador";
+      $ctr = new $nom;
       $ctr->mensaje("MLP BRUTO");
     }
   }

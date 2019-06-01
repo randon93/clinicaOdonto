@@ -1,11 +1,11 @@
 <?php /**
  *
  */
-class Hola extends Controlador{
+class HolaControlador extends Controlador{
 
   function __construct()  {
     parent::__construct();
-    echo "Hola Controlador";
+    echo "<h3>Hola Controlador</h3>";
   }
 }
  ?>

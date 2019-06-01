@@ -1,11 +1,11 @@
 <?php /**
  *
  */
-class Modelo extends Conexion{
+class HolaModel extends Modelo{
 
   function __construct()  {
     parent::__construct();
-    echo "<h1>MODELO PADRE</h1>";
+    echo "<h3>Hola modelo</h3>";
   }
 }
  ?>

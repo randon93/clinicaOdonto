@@ -4,9 +4,9 @@
  */
 class Conexion {
   function __construct(){
-    $this->bd = constant('bd');
-    $this->usuarioBd = constant('usuarioBd');
-    $this->pasword = constant('password');
+    $this->bd = constant('BD');
+    $this->usuarioBd = constant('USER');
+    $this->pasword = constant('PASSWORD');
     $this->pdo = null;
   }
   /** //////////////////////////////////////////////  */
