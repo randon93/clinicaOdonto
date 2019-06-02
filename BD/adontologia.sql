@@ -414,7 +414,7 @@ ALTER TABLE `auxiliar`
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
-  ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`cedula_o`) REFERENCES `odontologo` (`id`),
+
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`cedula_p`) REFERENCES `paciente` (`id`);
 
 --
