@@ -1,7 +1,7 @@
 <?php /**
  *
  */
-class HolaControlador extends Controlador{
+class InicioControlador extends Controlador{
 
   function __construct()  {
     parent::__construct();

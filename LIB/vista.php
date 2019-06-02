@@ -7,8 +7,9 @@ class Vista {
     echo "<h1>VISTA PADRE</h1>";
   }
 
-  public function render() {
-    // code...
+  public function render($vista) {
+    define('VISTA', $vista);
+    require_once "VISTA/plantilla.php";
   }
 }
  ?>

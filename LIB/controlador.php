@@ -6,13 +6,15 @@ class Controlador {
   private $CtrVista;
 
   public function getCtrModel()  {
-
+    return $this->CtrModel;
+  }
+  public function getCtrVista(){
+    return $this->CtrVista;
   }
 
   function __construct()  {
     echo "<h1>CONTROLADOR PADRE</H1>";
-    $this->CtrModel = null;
-    $this->CtrVista = null;
+    $this->CrearVista();
   }
 
   public function CrearModelo($nombreModelo)  {
