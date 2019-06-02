@@ -26,7 +26,7 @@ class Router {
       $nom = $url[0]."Controlador";
       $ctr = new $nom;
       $ctr->CrearModelo($url[0]);
-      $ctr->getCtrModel()->saludo();
+      // $ctr->getCtrModel()->saludo();
       $ctr->getCtrVista()->render($url[0]);
     }else {
       require_once "CONTROLADOR/errorControlador.php";

@@ -41,7 +41,7 @@ class PacienteModel extends Modelo{
 
         $consultar = $con -> prepare($sql);
         $consultar -> execute();
-        $con =  $this->cerrarCon()
+        $con =  $this->cerrarCon();
     }
   }
 
