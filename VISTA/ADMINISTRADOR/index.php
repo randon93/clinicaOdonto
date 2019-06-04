@@ -12,29 +12,47 @@
         <div class="card-header" id="headingOne">
           <h2 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Agendar cita
+              Clientes
             </button>
           </h2>
         </div>
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="card-body">
-            <form>
-              <ul>
-                <li>
-                  <select class="form-control form-control-sm" name="id_consultorio">
-                    <option>brandon</option>
-                    <option>lo mama</option>
-                    <option>y es gay</option>
-                </select>
-                </li>
-                <li>
-                  <input type="date" name="fecha">
-                </li>
-                <li>
-                  <input type="submit" name="btn-agendar" value="Agendar">
-                </li>
-              </ul>
-            </form>
+            <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Listar Clientes</a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Regitrar Cliente</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Eliminar Cliente</button>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+        <select class="form-control form-control-sm" name="clientes[]">
+          <option value="">cliente 1</option>
+          <option value="">cliente 2</option>
+          <option value="">cliente 3</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        <form class="inicio_form" action="index.html" method="post">
+          <label for="">Cedula: </label>
+          <input type="text" name="cedula" Required><br>
+          <label for="">Nombre: </label>
+          <input type="text" name="nombre" required><br>
+          <label for="">Correo: </label>
+          <input type="text" name="correo" required><br>
+          <label for="">Telefono: </label>
+          <input type="text" name="telefono" required><br>
+          <button type="button" name="registrar">Registrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </div>
