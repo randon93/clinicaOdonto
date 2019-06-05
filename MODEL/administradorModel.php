@@ -50,6 +50,12 @@ class AdministradorModel extends Modelo{
     $consultar -> execute( array( ":fecha_soli"->$fecha_solicitud, ":cedula_p"->$cedula_p, ":id_consultorio"->$id_consultorio, ":fecha_asig"->$fecha_asiganda ) );
   }
 
+  public function eliminar($paciente)  {
+    $sql = "DELETE FROM paciente WHERE id = :id";
+    $con = $this->bd->conectar();
+    $consultar = $con -> prepare($sql);
+    $consultar -> execute( array(":id"=>$paciente) );
+  }
 
 }
  ?>

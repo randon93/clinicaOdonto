@@ -19,7 +19,7 @@ class VistasModel extends Modelo{
     }
     return $consultorios;
   }
-    
+
 public function pacientes(){
     $con = $this->bd->conectar();
     $pacientes = [];
@@ -27,11 +27,28 @@ public function pacientes(){
     $consultar = $con -> prepare($sql);
     $consultar -> execute();
     foreach ( $consultar as $paciente){
-        $sql = "SELECT * FROM "
-        $pacient = new Persona($paciente['nombre'],$paciente['id'], $paciente['password'] );
-        array_push($pacientes, $pacient);
+        $sqll = "SELECT * FROM persona";
+        $consultarr = $con -> prepare($sqll);
+        $consultarr -> execute();
+        foreach ($consultarr as $persona) {
+          if ( strcmp($persona['cedula'], $paciente['cedula']) == 0 ) {
+            $pacient = new Persona($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono'], $paciente['id'] );
+            array_push($pacientes, $pacient);
+          }
+        }
     }
+    print_r($pacientes);
     return $pacientes;
+}
+
+public function buscarPa($cedula){
+  $con = $this->bd->conectar();
+  $consulta = $con->prepare("SELECT * FROM paciente WHERE cedula = :cedula");
+  $consulta -> execute( array(":cedula"=>$cedula) );
+  foreach ($consulta as $pac) {
+    return true;
+  }
+  return false;
 }
 }
  ?>

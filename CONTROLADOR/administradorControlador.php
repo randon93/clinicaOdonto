@@ -7,6 +7,12 @@ class administradorControlador extends Controlador{
     echo "<h3>Hola Controlador de administrador</h3>";
   }
 
+  public function eliminar()  {
+    $paciente = $_GET['paciente'];
+    $this->getCtrModel()->eliminar($paciente);
+    echo "<script>alert('PACIENTE ELIMINADO ');</script>";
+  }
+
 }
 
  ?>

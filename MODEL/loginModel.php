@@ -17,7 +17,7 @@ class loginModel extends Modelo{
     }elseif ($this->buscarAdmin($user)) {echo "<h1 style='background: blue;'>ENTRE 30</h1>";
       $sql = "SELECT * FROM administrador WHERE cedula = :cedula";
       $tipo = "administrador";
-    }echo $sql;
+    }//echo $sql;
     if ( isset($sql) ) {echo "<h1 style='background: blue;'>ENTRE 40</h1>";
       $con = $this->bd->conectar();
       $consulta = $con -> prepare($sql);

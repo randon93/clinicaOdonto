@@ -32,13 +32,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php forech($this->pacientes as $paciente){?>
+                                            <?php foreach($this->pacientes as $paciente){?>
                                             <tr>
                                                 <th scope="row"><?php echo $paciente->getId();?></th>
                                                 <td><?php echo $paciente->getNombre();?></td>
                                                 <td><?php echo $paciente->getTelefono();?></td>
                                                 <td>@<?php echo $paciente->getCorreo();?></td>
-                                                <td> <button type="button" class="btn btn-danger">Eleminar</button> </td>
+                                                <td> <a href="<?php echo constant('URL');?>administrador/eliminar?paciente=<?php echo $paciente->getId();?>"><button type="button" class="btn btn-danger">Eleminar</button></a> </td>
                                             </tr>
                                             <?php }?>
                                         </tbody>
