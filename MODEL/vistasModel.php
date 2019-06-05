@@ -19,5 +19,19 @@ class VistasModel extends Modelo{
     }
     return $consultorios;
   }
+    
+public function pacientes(){
+    $con = $this->bd->conectar();
+    $pacientes = [];
+    $sql = "SELECT * FROM paciente";
+    $consultar = $con -> prepare($sql);
+    $consultar -> execute();
+    foreach ( $consultar as $paciente){
+        $sql = "SELECT * FROM "
+        $pacient = new Persona($paciente['nombre'],$paciente['id'], $paciente['password'] );
+        array_push($pacientes, $pacient);
+    }
+    return $pacientes;
+}
 }
  ?>

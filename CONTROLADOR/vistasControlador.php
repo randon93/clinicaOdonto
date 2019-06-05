@@ -17,6 +17,7 @@ class VistasControlador extends Controlador{
   }
 
   public function administrador()  {
+    $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();
     $this->getCtrVista()->render("administrador");
   }
 
@@ -31,6 +32,7 @@ class VistasControlador extends Controlador{
   public function odontologo()  {
     $this->getCtrVista()->render("odontologo");
   }
+     
 
 
 }
