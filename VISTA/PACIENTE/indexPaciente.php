@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-4">
     <div class="list-group">
-      <h3 class="list-group-item">Nombre del paciente</h3>
-      <h3 class="list-group-item">telefono del paciente</h3>
-      <h3 class="list-group-item">Correo del paciente</h3>
+      <h3 class="list-group-item"><?php echo $_SESSION['USER']->getNombre();?></h3>
+      <h3 class="list-group-item"><?php echo $_SESSION['USER']->getTelefono(); ?></h3>
+      <h3 class="list-group-item"><?php echo $_SESSION['USER']->getCorreo(); ?></h3>
     </div>
   </div>
   <div class="col-md-8">
@@ -18,17 +18,17 @@
         </div>
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="card-body">
-            <form>
+            <form method="post" action="<?php echo constant('URL');?>PACIENTE/AgregarCita?pac=<?php echo $_SESSION['USER']->getId();?>">
               <ul>
                 <li>
-                  <select class="form-control form-control-sm" name="id_consultorio">
-                    <option>brandon</option>
-                    <option>lo mama</option>
-                    <option>y es gay</option>
+                  <select class="form-control form-control-sm" name="id_consultorio" >
+                    <?php foreach ($this->consultorios as $consultorio) { ?>
+                    <option value="<?php echo $consultorio->getId()?>"><?php echo $consultorio->getNombre()." -- ". $consultorio->getCedula_o();?></option>
+                  <?php } ?>
                 </select>
                 </li>
                 <li>
-                  <input type="date" name="fecha">
+                  <input type="date" name="fecha_asignada" required>
                 </li>
                 <li>
                   <input type="submit" name="btn-agendar" value="Agendar">

@@ -30,12 +30,12 @@ class PacienteControlador extends Controlador{
   }
 
   public function AgregarCita()  {
-    $fecha_Solicitud = $_GET['fecha_solicitud'];
-    $cedula_p = $_GET['cedula_p'];
-    $id_consultorio = $_GET['id_consultorio'];
-    $fecha_asiganda = $_GET['fecha_asignada'];
-
-    $this->getCtrModel()->AgregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asignada);
+    $fecha_Solicitud = date('Y-m-d');
+    $cedula_p = $_GET['pac'];
+    $id_consultorio = $_POST['id_consultorio'];
+    $fecha_asiganda = $_POST['fecha_asignada'];
+    $this->getCtrModel()->AgregarCita($fecha_Solicitud, $cedula_p, $id_consultorio, $fecha_asiganda);
+    header('Location:  http://127.0.0.1/clinicaOdonto/');
 
   }
 

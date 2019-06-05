@@ -24,7 +24,7 @@
       <?php
           $vista = constant('VISTA');
           require_once "menu.php";
-          require_once "$vista/index.php";
+          require_once "$vista/index$vista.php";
        ?>
     </div>
     <div class="row">

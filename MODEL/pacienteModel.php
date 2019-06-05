@@ -45,11 +45,12 @@ class PacienteModel extends Modelo{
     }
   }
 
-  public function agregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asignada)  {
+  public function agregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asiganda)  {
+                             // `fecha_solicitud`, `cedula_p`, `id_consultorio`, `fecha_asignada`
     $sql = "INSERT INTO cita (fecha_solicitud, cedula_p, id_consultorio, fecha_asignada) VALUES (:fecha_soli, :cedula_p, :id_consultorio, :fecha_asig)";
     $con = $this->bd->conectar();
     $cosnultar = $con -> prepare($sql);
-    $consultar -> execute( array( ":fecha_soli"->$fecha_solicitud, ":cedula_p"->$cedula_p, ":id_consultorio"->$id_consultorio, ":fecha_asig"->$fecha_asiganda ) );
+    $cosnultar -> execute( array( ":fecha_soli"=>$fecha_solicitud, ":cedula_p"=>$cedula_p, ":id_consultorio"=>$id_consultorio, ":fecha_asig"=>$fecha_asiganda ) );
   }
 
 

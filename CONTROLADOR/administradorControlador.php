@@ -6,6 +6,7 @@ class administradorControlador extends Controlador{
     parent::__construct();
     echo "<h3>Hola Controlador de administrador</h3>";
   }
+
 }
 
  ?>
