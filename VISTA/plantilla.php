@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo constant('URL');?>PUBLIC/font/css/fontawesome.css">
-    <link rel="stylesheet" href="<?php echo constant('URL');?>PUBLIC/css/style.css">
+    <link rel="stylesheet" href="<?php echo constant('URL');?>PUBLIC/css/styly.css">
     <link rel="stylesheet" href="<?php echo constant('URL');?>PUBLIC/css/bootstrap-grid.css">
     <link rel="stylesheet" href="<?php echo constant('URL');?>PUBLIC/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="<?php echo constant('URL');?>PUBLIC/css/bootstrap-grid.min.css">

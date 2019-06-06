@@ -3,12 +3,12 @@
   margin-top: 0;
   border-style: groove;
   }
-  p1{
+  #p1{
     text-align: left;
   }
-  p2{
+  #p2{
     text-align: center;
   }
-  p3{
+  #p3{
     text-align: right;
   }
