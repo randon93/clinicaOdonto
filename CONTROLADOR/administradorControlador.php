@@ -13,6 +13,15 @@ class administradorControlador extends Controlador{
     echo "<script>alert('PACIENTE ELIMINADO ');</script>";
   }
 
+  public function resgistrarPaciente()  {
+    $cedula = $_POST['cedula'];
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    $password = $_POST['password'];
+    $telefono = $_POST['telefono'];
+    $this->getCtrModel()->resgistrarPaciente($cedula, $nombre, $correo, $telefono, $password);
+  }
+
 }
 
  ?>
