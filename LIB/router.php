@@ -14,25 +14,25 @@ class Router {
 
   private function validarSesion(){
     if ( !isset( $_SESSION['USER'] ) ) {
-      var_dump(isset( $_SESSION['USER'] ));
+      //var_dump(isset( $_SESSION['USER'] ));
       $this->sesionOff();
-    }else{var_dump(isset( $_SESSION['USER'] ));
+    }else{ //var_dump(isset( $_SESSION['USER'] ));
       $this->sesionOn();
     }
   }
 
-  private function sesionOn(){echo "----sesion On";
+  private function sesionOn(){//echo "----sesion On";
     $url = isset($_GET['url']) ? $_GET['url']: $_SESSION['TIPO'];
     $url = rtrim($url, '/');
     $url = explode('/', $url);
-    echo $url[0];
+   // echo $url[0];
     $archivo = "CONTROLADOR/$url[0]Controlador.php";
     if ( file_exists($archivo) ) {
       require_once $archivo;
       $nom = "$url[0]Controlador";
       $ctr = new $nom;
       $ctr->CrearModelo($url[0]);
-      if ( isset($url[1]) ) { echo "<h1>BUSCO MEDTODO</h1>";
+      if ( isset($url[1]) ) { //echo "<h1>BUSCO MEDTODO</h1>";
         $ctr->{$url[1]}();
       }else{echo "BUSCO VISTA";
         require_once "CONTROLADOR/vistasControlador.php";
@@ -59,7 +59,7 @@ class Router {
     $ctr = new $nom;
     $ctr -> CrearModelo($url[0]);
     // echo "<h1> $url[1] </h1>";
-    if ( isset($url[1]) ) { echo "******busco metodos";
+    if ( isset($url[1]) ) { //echo "******busco metodos";
       $ctr->{$url[1]}();
     }else{
       $ctr -> getCtrVista() -> render($url[0]);

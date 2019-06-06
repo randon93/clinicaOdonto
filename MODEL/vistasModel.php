@@ -38,7 +38,7 @@ public function pacientes(){
           }
         }
     }
-    print_r($pacientes);
+    // print_r($pacientes);
     return $pacientes;
 }
 
@@ -64,6 +64,27 @@ public function citas(){
     array_push($citas, $cit);
   }
   return $citas;  
+}
+
+public function odontologos(){
+  $sql = "SELECT * FROM odontologo";
+  $odontologos = [];
+  $con = $this->bd->conectar();
+  $consultar = $con -> prepare($sql);
+  $consultar -> execute();
+  foreach ($consultar as $value) {
+    $sqll = "SELECT * FROM persona";
+    $consultarr = $con ->  prepare($sqll);
+    $consultarr -> execute();
+    foreach ($consultarr as $persona) {
+      if ( strcmp($persona['cedula'], $value['cedula']) == 0 ) {
+        $odontolog = new Persona();
+        $odontolog->crearT($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono'], $value['id'] );
+        array_push($odontologos, $odontolog);
+      }
+    }
+  }
+  return $odontologos;
 }
 
 

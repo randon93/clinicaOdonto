@@ -13,7 +13,7 @@ class Controlador {
   }
 
   function __construct()  {
-    echo "<h1>CONTROLADOR PADRE</H1>";
+   // echo "<h1>CONTROLADOR PADRE</H1>";
     $this->CrearVista();
   }
 

@@ -26,10 +26,11 @@ class loginModel extends Modelo{
         if ( strcmp($paciente['password'], $password) == 0 ) {echo "<h1 style='background: blue;'>ENTRE 60</h1>";
           $idP = $paciente['id'];
           $sql = "SELECT * FROM persona WHERE cedula = :cedula";
-          $consulta = $con -> prepare($sql);
-          $consulta -> execute ( array(":cedula"=>$user) );
-          foreach ($consulta as $persona) {echo "<h1 style='background: blue;'>ENTRE 70 </h1>";
-            $personita = new Persona ($persona['cedula'], $persona['nombre'],$persona['correo'], $persona['telefono'], $idP);
+          $consultar = $con -> prepare($sql);
+          $consultar -> execute ( array(":cedula"=>$user) );
+          foreach ($consultar as $persona) {echo "<h1 style='background: blue;'>ENTRE 70 </h1>";
+            $personita = new Persona ();
+            $personita -> crearT($persona['cedula'], $persona['nombre'],$persona['correo'], $persona['telefono'], $idP);
             echo "LOGIE HPS";
             $_SESSION['TIPO'] = $tipo;
             $_SESSION['USER']  = $personita;
