@@ -51,5 +51,21 @@ public function buscarPa($cedula){
   }
   return false;
 }
+
+public function citas(){
+  $con = $this->bd->conectar();
+  $sql = "SELECT * FROM cita";
+  $citas = [];
+  $consultar = $con -> prepare($sql);
+  $consultar -> execute();
+  foreach ($consultar as $cita){
+    $cit = new Cita();
+    $cit->crear($cita['fecha_solicitud'], $cita['cedula_p'], $cita['id_consultorio'], $cita['fecha_asignada'], $cita['numero_cita']);
+    array_push($citas, $cit);
+  }
+  return $citas;  
+}
+
+
 }
  ?>

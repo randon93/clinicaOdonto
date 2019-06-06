@@ -62,18 +62,29 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Paciente</th>
-                                    <th scope="col">Doctor</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
+                        <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Paciente</th>
+                                                <th scope="col">Fecha Solicitud</th>
+                                                <th scope="col">Fecha Asignada</th>
+                                                <th scope="col">Consultorio</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach($this->citas as $cita){?>
+                                            <tr>
+                                                <th scope="row"><?php echo $cita->getNumero_cita();?></th>
+                                                <td><?php echo $cita->getCedula_p();?></td>
+                                                <td><?php echo $cita->getFecha_solicitud();?></td>
+                                                <td>@<?php echo $cita->getFecha_asignada();?></td>
+                                                <td>@<?php echo $cita->getId_consultorio();?></td>
+                                                <td> <button type="button" class="btn btn-danger">Eleminar</button></td>
+                                            </tr>
+                                            <?php }?>
+                                        </tbody>
                         </table>
                     </div>
                 </div>

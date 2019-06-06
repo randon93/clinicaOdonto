@@ -17,6 +17,7 @@ class VistasControlador extends Controlador{
   }
 
   public function administrador()  {
+    $this->getCtrVista()->citas = $this->getCtrModel()->citas();
     $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();
     $this->getCtrVista()->render("administrador");
   }
