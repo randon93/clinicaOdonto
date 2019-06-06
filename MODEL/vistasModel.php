@@ -32,7 +32,8 @@ public function pacientes(){
         $consultarr -> execute();
         foreach ($consultarr as $persona) {
           if ( strcmp($persona['cedula'], $paciente['cedula']) == 0 ) {
-            $pacient = new Persona($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono'], $paciente['id'] );
+            $pacient = new Persona();
+            $pacient->crearT($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono'], $paciente['id'] );
             array_push($pacientes, $pacient);
           }
         }

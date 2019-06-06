@@ -9,12 +9,22 @@ class Persona  {
   private $telefono;
   private $id;
 
-  function __construct($cedula, $nombre, $correo, $telefono, $id)  {
+  public function __construct()  {
+    
+  }
+  function crearT($cedula, $nombre, $correo, $telefono, $id)  {
       $this->cedula = $cedula;
       $this->nombre = $nombre;
       $this->correo = $correo;
       $this->telefono = $telefono;
       $this->id = $id;
+  }
+  function crear($cedula, $nombre, $correo, $telefono)  {
+      $this->cedula = $cedula;
+      $this->nombre = $nombre;
+      $this->correo = $correo;
+      $this->telefono = $telefono;
+      $this->id = null;
   }
 
   public function getId()  {

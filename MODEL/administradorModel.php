@@ -11,9 +11,10 @@ class AdministradorModel extends Modelo{
     $sql = "SELECT * FROM persona WHERE cedula = :cedula";
     $con = $this->bd->conectar();
     $consulta = $con -> prepare($sql);
-    $consulta -> execute( array(":cedula"->$cedula) );
+    $consulta -> execute( array(":cedula"=>$cedula) );
     foreach ($consulta as $persona) {
-      $pe = new Persona($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
+      $pe = new Persona();
+      $pe->crear($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
       array_push($per, $pe);
       return $per;
     }
@@ -21,22 +22,20 @@ class AdministradorModel extends Modelo{
   }
 
   public function registrarPersona($cedula, $nombre, $correo, $telefono)  {
-    $sql = "INSERT INTO persona (cedula, nombre, correo, telefono) VALUES ( $cedula, $nombre, $correo, $telefono )";
+    $sql = "INSERT INTO persona(cedula, nombre, correo, telefono) VALUES ( :cedula, :nombre, :correo, :telefono )";
     $con = $this->bd->conectar();
     $consulta = $con -> prepare($sql);
-    $consulta -> execute();
-    if ( !empty( $this->buscarPersona($persona->getCedula) ) ) {
+    $consulta -> execute( array( ":cedula"=>$cedula, ":nombre"=>$nombre, ":correo"=>$correo, ":telefono"=>$telefono ) );
+    if ( !empty( $this->buscarPersona($cedula) ) ) {
       return true;
     }
     return false;
   }
 
-  public function resgistrarPaciente($cedula, $nombre, $correo, $telefono)  {
+  public function resgistrarPaciente($cedula, $nombre, $correo, $telefono, $password)  {
     if ( $this->registrarPersona($cedula, $nombre, $correo, $telefono) ) {
-        $sql = "INSERT INTO paciente (cedula) VALUES ( $cedula )";
+        $sql = "INSERT INTO paciente (cedula, password) VALUES ( $cedula, $password )";
         $con = $this->bd->conectar();
-
-
         $consultar = $con -> prepare($sql);
         $consultar -> execute();
         $con =  $this->cerrarCon();
