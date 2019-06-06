@@ -21,6 +21,15 @@
     <title>Clinica VitalDent</title>
   </head>
   <body>
+    <header>
+      <table>
+        <tr>
+          <th><img src="./PUBLIC/imagenes/img1.png"></th>
+          <th>Llamanos gratis desde <br> tu celular al</th>
+          <th>#262</th>
+        </tr>
+      </table>
+    </header>
     <div class="container">
       <?php
           $vista = constant('VISTA');
