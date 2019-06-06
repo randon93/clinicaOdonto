@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2019 a las 22:18:11
+-- Tiempo de generación: 06-06-2019 a las 00:03:22
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administrador` (
   `id` int(11) NOT NULL,
-  `cedula` varchar(10) DEFAULT NULL
+  `cedula` varchar(10) DEFAULT NULL,
+  `password` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`id`, `cedula`, `password`) VALUES
+(1, '5394127', '123456789');
 
 -- --------------------------------------------------------
 
@@ -66,9 +74,20 @@ CREATE TABLE `cita` (
   `fecha_solicitud` date NOT NULL,
   `cedula_p` int(11) NOT NULL,
   `id_consultorio` int(11) NOT NULL,
-  `fecha_asignada` date NOT NULL,
-  `cedula_o` int(11) NOT NULL
+  `fecha_asignada` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cita`
+--
+
+INSERT INTO `cita` (`numero_cita`, `fecha_solicitud`, `cedula_p`, `id_consultorio`, `fecha_asignada`) VALUES
+(6, '2019-06-05', 1, 1, '2019-06-06'),
+(7, '2019-06-05', 1, 1, '2019-06-06'),
+(8, '2019-06-05', 1, 1, '2019-06-24'),
+(9, '2019-06-05', 1, 1, '0000-00-00'),
+(10, '2019-06-05', 1, 1, '2019-06-30'),
+(11, '2019-06-05', 1, 1, '2019-07-09');
 
 -- --------------------------------------------------------
 
@@ -81,8 +100,16 @@ CREATE TABLE `colsultorio` (
   `nombre` varchar(50) DEFAULT NULL,
   `direccion` varchar(50) DEFAULT NULL,
   `correo` varchar(30) DEFAULT NULL,
-  `telefono` varchar(10) DEFAULT NULL
+  `telefono` varchar(10) DEFAULT NULL,
+  `cedula_o` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `colsultorio`
+--
+
+INSERT INTO `colsultorio` (`id`, `nombre`, `direccion`, `correo`, `telefono`, `cedula_o`) VALUES
+(1, 'consulrotio NO 1', 'no se', 'falso@gmail.com', '5951356', 1);
 
 -- --------------------------------------------------------
 
@@ -149,8 +176,17 @@ CREATE TABLE `factura_paciente` (
 
 CREATE TABLE `odontologo` (
   `id` int(11) NOT NULL,
-  `cedula` varchar(10) DEFAULT NULL
+  `cedula` varchar(10) DEFAULT NULL,
+  `password` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `odontologo`
+--
+
+INSERT INTO `odontologo` (`id`, `cedula`, `password`) VALUES
+(1, '1090464707', NULL),
+(2, '1090464770', '123456789');
 
 -- --------------------------------------------------------
 
@@ -171,8 +207,16 @@ CREATE TABLE `odontologo_especialidad` (
 
 CREATE TABLE `paciente` (
   `id` int(11) NOT NULL,
-  `cedula` varchar(10) DEFAULT NULL
+  `cedula` varchar(10) DEFAULT NULL,
+  `password` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `paciente`
+--
+
+INSERT INTO `paciente` (`id`, `cedula`, `password`) VALUES
+(1, '1090464707', '123456789');
 
 -- --------------------------------------------------------
 
@@ -182,10 +226,19 @@ CREATE TABLE `paciente` (
 
 CREATE TABLE `persona` (
   `cedula` varchar(10) NOT NULL,
-  `nonbre` varchar(50) DEFAULT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
   `correo` varchar(50) DEFAULT NULL,
   `telefono` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`cedula`, `nombre`, `correo`, `telefono`) VALUES
+('1090464707', 'javier garcia', 'jbgm93@gmail.com', '3105789665'),
+('1090464770', 'brandon maldoando', 'brnadon@gmail.com', '3188169236'),
+('5394127', 'jose maldonado', 'maldoando@gmail.com', '5951358');
 
 -- --------------------------------------------------------
 
@@ -239,14 +292,14 @@ ALTER TABLE `auxiliar`
 ALTER TABLE `cita`
   ADD PRIMARY KEY (`numero_cita`),
   ADD KEY `cedula_p` (`cedula_p`),
-  ADD KEY `cedula_o` (`cedula_o`),
   ADD KEY `id_consultorio` (`id_consultorio`);
 
 --
 -- Indices de la tabla `colsultorio`
 --
 ALTER TABLE `colsultorio`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cedula_o` (`cedula_o`);
 
 --
 -- Indices de la tabla `consultorio_auxialiar`
@@ -332,7 +385,7 @@ ALTER TABLE `procedimiento_paciente`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `auxiliar`
@@ -344,13 +397,13 @@ ALTER TABLE `auxiliar`
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `numero_cita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numero_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `colsultorio`
 --
 ALTER TABLE `colsultorio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `consultorio_auxialiar`
@@ -374,13 +427,13 @@ ALTER TABLE `factura`
 -- AUTO_INCREMENT de la tabla `odontologo`
 --
 ALTER TABLE `odontologo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `procedimiento`
@@ -414,8 +467,14 @@ ALTER TABLE `auxiliar`
 -- Filtros para la tabla `cita`
 --
 ALTER TABLE `cita`
+  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`cedula_p`) REFERENCES `paciente` (`id`),
+  ADD CONSTRAINT `cita_ibfk_3` FOREIGN KEY (`id_consultorio`) REFERENCES `colsultorio` (`id`);
 
-  ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`cedula_p`) REFERENCES `paciente` (`id`);
+--
+-- Filtros para la tabla `colsultorio`
+--
+ALTER TABLE `colsultorio`
+  ADD CONSTRAINT `colsultorio_ibfk_1` FOREIGN KEY (`cedula_o`) REFERENCES `odontologo` (`id`);
 
 --
 -- Filtros para la tabla `consultorio_auxialiar`
