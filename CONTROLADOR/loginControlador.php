@@ -7,7 +7,7 @@ class loginControlador extends Controlador{
     parent::__construct();
   }
 
-    public function login()  { echo "<h1>CONTROLADOR LOGIN</h1>";
+    public function login()  {// echo "<h1>CONTROLADOR LOGIN</h1>";
       $user = $_POST['user'];
       $password = $_POST['password'];
       $user = $this->getCtrModel()->login($user, $password);
@@ -20,6 +20,12 @@ class loginControlador extends Controlador{
         // header('Location:  http://127.0.0.1/clinicaOdonto/vistas/error');
       }
 
+    }
+
+    public function cerrar()    {
+      session_unset();
+      session_destroy();
+      header("Location:  http://127.0.0.1/clinicaOdonto");
     }
 }
  ?>

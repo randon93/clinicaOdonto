@@ -87,6 +87,19 @@ public function odontologos(){
   return $odontologos;
 }
 
+public function personas(){
+    $con = $this->bd->conectar();
+    $personas = [];
+    $sql = "SELECT * FROM persona";
+    $cosnultar = $con -> prepare($sql);
+    $cosnultar -> execute();
+    foreach ($cosnultar as $persona) {
+      $consul = new Persona();
+      $consul->crear($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
+      array_push($personas, $consul);
+    }
+    return $consultorios;
+}
 
 }
  ?>

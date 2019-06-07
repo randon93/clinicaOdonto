@@ -4,6 +4,7 @@
       <h3 class="list-group-item"><?php echo $_SESSION['USER']->getNombre();?></h3>
       <h3 class="list-group-item"><?php echo $_SESSION['USER']->getTelefono(); ?></h3>
       <h3 class="list-group-item"><?php echo $_SESSION['USER']->getCorreo(); ?></h3>
+      <a href="<?php echo constant('URL');?>login/cerrar"><button type="button" class="btn btn-secondary">Cerrar Sesion</button></a>
     </div>
   </div>
   <div class="col-md-8">

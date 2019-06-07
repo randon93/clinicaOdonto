@@ -5,6 +5,7 @@
             <h3 class="list-group-item"><?php echo $_SESSION['USER']->getNombre();?></h3>
             <h3 class="list-group-item"><?php echo $_SESSION['USER']->getTelefono();?></h3>
             <h3 class="list-group-item"><?php echo $_SESSION['USER']->getCorreo();?></h3>
+            <a href="<?php echo constant('URL');?>login/cerrar"><button type="button" class="btn btn-secondary">Cerrar Sesion</button></a>
         </div>
     </div>
     <div class="col-md-8">
@@ -14,7 +15,7 @@
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
-                            Clientes
+                            Pacientes
                         </button>
                     </h2>
                 </div>
