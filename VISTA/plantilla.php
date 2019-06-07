@@ -33,8 +33,9 @@
     <div class="container">
       <?php
           $vista = constant('VISTA');
+          $carpeta = constant('CARPETA');
           require_once "menu.php";
-          require_once "$vista/index$vista.php";
+          require_once "$carpeta/index$vista.php";
        ?>
     </div>
     <div class="row">

@@ -50,6 +50,12 @@ class VistasControlador extends Controlador{
     $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();   
     $this->getCtrVista()->render("odontologo");
   }
+
+  public function atender()  {
+    $u = $_GET['pacc'];
+    $this->getCtrVista()->no = $u;
+    $this->getCtrVista()->renderD("odontologo","atenderPaciente");
+  }
      
 
 
