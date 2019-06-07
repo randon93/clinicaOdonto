@@ -27,7 +27,7 @@
                 <?php foreach($this->citass as $cita){?>
                 <tr>
                     <th scope="row"><?php echo $cita->getNumero_cita();?></th>
-                    <td><?php 
+                    <td><?php
                             foreach ($this->pacientes as $paciente) {
                                 if ( strcmp($paciente->getId(), $cita->getCedula_p()) == 0 ) {
                                     echo $paciente->getNombre();
@@ -35,7 +35,7 @@
                              }
                      ?></td>
                     <td>@<?php echo $cita->getFecha_asignada();?></td>
-                    <td> <a href="<?php echo constant('URL');?>vistas/atender?pacc=<?php echo $cita->getNumero_cita()?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
+                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?cita=<?php echo $cita->getCedula_p();?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
                 </tr>
                 <?php }?>
             </tbody>

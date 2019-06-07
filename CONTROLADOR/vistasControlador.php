@@ -42,21 +42,22 @@ class VistasControlador extends Controlador{
           if ( strcmp($cita->getId_consultorio(), $consultorio->getId()) == 0 ) {//echo "entre 4";
             array_push($citasA, $cita);
           }
-        }        
+        }
       }
        // break;
     }
-    $this->getCtrVista()->citass = $citasA; 
-    $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();   
+    $this->getCtrVista()->citass = $citasA;
+    $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();
     $this->getCtrVista()->render("odontologo");
   }
 
   public function atender()  {
-    $u = $_GET['pacc'];
-    $this->getCtrVista()->no = $u;
-    $this->getCtrVista()->renderD("odontologo","atenderPaciente");
+    $u = $_GET['cita'];
+    print_r($_GET['cita']);
+    //$this->getCtrVista()->paciente = $u;
+    //$this->getCtrVista()->renderD("odontologo","atenderPaciente");
   }
-     
+
 
 
 }

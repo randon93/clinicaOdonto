@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <h1><?php echo $this->no." hola";?></h1>
+            <h1><?php echo print_r($this->historias);?></h1>
         </div>
     </div>
 </html>
