@@ -18,7 +18,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Paciente</th>
-                    <th scope="col">Paciente</th>
+                    <th scope="col">Fecha</th>
                     <th scope="col"></th>
                     <!-- <th scope="col"></th> -->
                 </tr>
@@ -30,12 +30,13 @@
                     <td><?php
                             foreach ($this->pacientes as $paciente) {
                                 if ( strcmp($paciente->getId(), $cita->getCedula_p()) == 0 ) {
-                                    echo $paciente->getNombre();
+                                    $this->pac = $paciente->getNombre();
+                                    echo $this->pac;
                                 }
                              }
                      ?></td>
                     <td>@<?php echo $cita->getFecha_asignada();?></td>
-                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?cita=<?php echo $cita->getCedula_p();?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
+                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?cita=<?php echo $cita->getCedula_p()."&&paci=".$this->pac;?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
                 </tr>
                 <?php }?>
             </tbody>

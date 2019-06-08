@@ -15,7 +15,7 @@ class OdontologoModel extends Modelo {
           $consultarr = $con -> prepare($sqll);
           $consultarr -> execute( array(":numeroC"=>$cita['numero_cita']) );
           foreach ($consultarr as $historia) {
-              array_push($historias, $historia['descripcion']);
+              array_push($historias, $historia);
           }
         }
         return $historias;
