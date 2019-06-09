@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2019 a las 00:03:22
+-- Tiempo de generación: 09-06-2019 a las 21:49:22
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -49,8 +49,19 @@ INSERT INTO `administrador` (`id`, `cedula`, `password`) VALUES
 
 CREATE TABLE `atencion_cita` (
   `numero_cita` int(11) NOT NULL,
-  `fecha_asignada` date NOT NULL
+  `fecha_asignada` date NOT NULL,
+  `descripcion` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `atencion_cita`
+--
+
+INSERT INTO `atencion_cita` (`numero_cita`, `fecha_asignada`, `descripcion`) VALUES
+(14, '2019-06-09', 'popo'),
+(17, '2019-06-27', 'tomar '),
+(18, '2019-06-30', 'chichi'),
+(19, '2019-06-10', 'le sacaron la lengua por sapo');
 
 -- --------------------------------------------------------
 
@@ -82,12 +93,10 @@ CREATE TABLE `cita` (
 --
 
 INSERT INTO `cita` (`numero_cita`, `fecha_solicitud`, `cedula_p`, `id_consultorio`, `fecha_asignada`) VALUES
-(6, '2019-06-05', 1, 1, '2019-06-06'),
-(7, '2019-06-05', 1, 1, '2019-06-06'),
-(8, '2019-06-05', 1, 1, '2019-06-24'),
-(9, '2019-06-05', 1, 1, '0000-00-00'),
-(10, '2019-06-05', 1, 1, '2019-06-30'),
-(11, '2019-06-05', 1, 1, '2019-07-09');
+(14, '2019-06-09', 1, 1, '2019-06-09'),
+(17, '2019-06-09', 2, 1, '2019-06-27'),
+(18, '2019-06-09', 2, 1, '2019-06-30'),
+(19, '2019-06-09', 5, 1, '2019-06-10');
 
 -- --------------------------------------------------------
 
@@ -109,7 +118,7 @@ CREATE TABLE `colsultorio` (
 --
 
 INSERT INTO `colsultorio` (`id`, `nombre`, `direccion`, `correo`, `telefono`, `cedula_o`) VALUES
-(1, 'consulrotio NO 1', 'no se', 'falso@gmail.com', '5951356', 1);
+(1, 'consulrotio NO 1', 'no se', 'falso@gmail.com', '5951356', 2);
 
 -- --------------------------------------------------------
 
@@ -185,7 +194,6 @@ CREATE TABLE `odontologo` (
 --
 
 INSERT INTO `odontologo` (`id`, `cedula`, `password`) VALUES
-(1, '1090464707', NULL),
 (2, '1090464770', '123456789');
 
 -- --------------------------------------------------------
@@ -216,7 +224,10 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id`, `cedula`, `password`) VALUES
-(1, '1090464707', '123456789');
+(1, '1090464707', '123456789'),
+(2, '1090464771', '987654321'),
+(3, '1090464777', '12345678'),
+(5, '1005059719', '789456123');
 
 -- --------------------------------------------------------
 
@@ -236,8 +247,11 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`cedula`, `nombre`, `correo`, `telefono`) VALUES
+('1005059719', 'brayan', 'brayan@gmail.com', '123456789'),
 ('1090464707', 'javier garcia', 'jbgm93@gmail.com', '3105789665'),
 ('1090464770', 'brandon maldoando', 'brnadon@gmail.com', '3188169236'),
+('1090464771', 'brayan', 'brayan@gmail.com', '6543210'),
+('1090464777', 'NOHORA', 'NOHORA@GMAIL.COM', '123456789'),
 ('5394127', 'jose maldonado', 'maldoando@gmail.com', '5951358');
 
 -- --------------------------------------------------------
@@ -397,7 +411,7 @@ ALTER TABLE `auxiliar`
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `numero_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `numero_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `colsultorio`
@@ -433,7 +447,7 @@ ALTER TABLE `odontologo`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `procedimiento`
