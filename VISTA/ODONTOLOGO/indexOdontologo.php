@@ -24,23 +24,23 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($this->citass as $cita){ 
+                <?php  foreach($this->citass as $cita){ 
                   $date1 = new DateTime( date("Y-m-d") );
-                  $date2 = new DateTime( $cita->getFecha_asignada() ); 
-                  if ( $date1 <= $date2 ) {          
+                  $date2 = new DateTime( $cita['fecha_asignada'] );                   
+                  if ( $date1 <= $date2 ) {        
                   ?>
                 <tr>
-                    <th scope="row"><?php echo $cita->getNumero_cita();?></th>
+                    <th scope="row"><?php echo $cita['numero_cita'];?></th>
                     <td><?php
-                            foreach ($this->pacientes as $paciente) {
-                                if ( strcmp($paciente->getId(), $cita->getCedula_p()) == 0 ) {
+                            foreach ($this->pacientes as $paciente) { ;
+                                if ( strcmp($paciente->getId(), $cita['cedula_p']) == 0 ) {                                  
                                     $this->pac = $paciente->getNombre();
                                     echo $this->pac;
                                 }
                              }
                      ?></td>
-                    <td>@<?php echo $cita->getFecha_asignada();?></td>
-                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?ccP=<?php $array = array( 'paciente'=>$this->pac, 'cita'=>$cita->getNumero_cita() );  echo $cita->getCedula_p()."&&paci=". urlencode(serialize($array));?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
+                    <td>@<?php echo $cita['fecha_asignada'];?></td>
+                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?ccP=<?php $array = array( 'paciente'=>$this->pac, 'cita'=>$cita['numero_cita'] );  echo $cita['cedula_p']."&&paci=". urlencode(serialize($array));?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
                 </tr>
                 <?php }}?>
             </tbody>

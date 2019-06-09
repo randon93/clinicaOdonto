@@ -35,10 +35,12 @@ class loginModel extends Modelo{
             $_SESSION['TIPO'] = $tipo;
             $_SESSION['USER']  = $personita;
             echo $_SESSION['USER']->getNombre();
+            $con = $this->cerrarCon();
             return TRUE;
           }
         }
       }echo "NO LOGIE HPS";
+      $con = $this->cerrarCon();
       return FALSE;
     }
   }
@@ -48,8 +50,10 @@ class loginModel extends Modelo{
     $consultar = $con -> prepare("SELECT * FROM paciente WHERE cedula = $cedula");
     $consultar -> execute();
     foreach ($consultar as $value) {
+      $con = $this->cerrarCon();
       return TRUE;
     }
+    $con = $this->cerrarCon();
     return false;
   }
 
@@ -59,7 +63,9 @@ class loginModel extends Modelo{
     $consultar -> execute();
     foreach ($consultar as $value) {
       return TRUE;
+      $con = $this->cerrarCon();
     }
+    $con = $this->cerrarCon();
     return false;
   }
 
@@ -68,8 +74,10 @@ class loginModel extends Modelo{
     $consultar = $con -> prepare("SELECT * FROM administrador WHERE cedula = $cedula");
     $consultar -> execute();
     foreach ($consultar as $value) {
+      $con = $this->cerrarCon();
       return TRUE;
     }
+    $con = $this->cerrarCon();
     return false;
   }
 }

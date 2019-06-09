@@ -16,8 +16,10 @@ class AdministradorModel extends Modelo{
       $pe = new Persona();
       $pe->crear($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
       array_push($per, $pe);
+      $con = $this->cerrarCon();
       return $per;
     }
+    $con = $this->cerrarCon();
     return $per;
   }
 
@@ -27,8 +29,10 @@ class AdministradorModel extends Modelo{
     $consulta = $con -> prepare($sql);
     $consulta -> execute( array( ":cedula"=>$cedula, ":nombre"=>$nombre, ":correo"=>$correo, ":telefono"=>$telefono ) );
     if ( !empty( $this->buscarPersona($cedula) ) ) {
+      $con = $this->cerrarCon();
       return true;
     }
+    $con = $this->cerrarCon();
     return false;
   }
 
@@ -40,6 +44,7 @@ class AdministradorModel extends Modelo{
         $consultar -> execute();
         $con =  $this->cerrarCon();
     }
+    $con = $this->cerrarCon();
   }
 
   public function agregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asignada)  {
@@ -47,6 +52,7 @@ class AdministradorModel extends Modelo{
     $con = $this->bd->conectar();
     $cosnultar = $con -> prepare($sql);
     $consultar -> execute( array( ":fecha_soli"->$fecha_solicitud, ":cedula_p"->$cedula_p, ":id_consultorio"->$id_consultorio, ":fecha_asig"->$fecha_asiganda ) );
+    $con = $this->cerrarCon();
   }
 
   public function eliminar($paciente)  {
@@ -54,6 +60,7 @@ class AdministradorModel extends Modelo{
     $con = $this->bd->conectar();
     $consultar = $con -> prepare($sql);
     $consultar -> execute( array(":id"=>$paciente) );
+    $con = $this->cerrarCon();
   }
 
 }

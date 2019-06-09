@@ -17,8 +17,10 @@ class PacienteModel extends Modelo{
     foreach ($consulta as $persona) {
       $pe = new Persona($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
       array_push($per, $pe);
+      $con = $this->cerrarCon();
       return $per;
     }
+    $con = $this->cerrarCon();
     return $per;
   }
 
@@ -28,8 +30,10 @@ class PacienteModel extends Modelo{
     $consulta = $con -> prepare($sql);
     $consulta -> execute();
     if ( !empty( $this->buscarPersona($persona->getCedula) ) ) {
+      $con = $this->cerrarCon();
       return true;
     }
+    $con = $this->cerrarCon();
     return false;
   }
 
@@ -37,12 +41,11 @@ class PacienteModel extends Modelo{
     if ( $this->registrarPersona($cedula, $nombre, $correo, $telefono) ) {
         $sql = "INSERT INTO paciente (cedula) VALUES ( $cedula )";
         $con = $this->bd->conectar();
-
-
         $consultar = $con -> prepare($sql);
         $consultar -> execute();
         $con =  $this->cerrarCon();
     }
+    $con = $this->cerrarCon();
   }
 
   public function agregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asiganda)  {
@@ -51,6 +54,7 @@ class PacienteModel extends Modelo{
     $con = $this->bd->conectar();
     $cosnultar = $con -> prepare($sql);
     $cosnultar -> execute( array( ":fecha_soli"=>$fecha_solicitud, ":cedula_p"=>$cedula_p, ":id_consultorio"=>$id_consultorio, ":fecha_asig"=>$fecha_asiganda ) );
+    $con = $this->cerrarCon();
   }
 
 

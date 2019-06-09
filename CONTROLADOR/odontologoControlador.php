@@ -9,7 +9,7 @@
         $miArray = unserialize($_GET['paci']);
         $this->getCtrVista()->paciente = $miArray;
         $this->getCtrVista()->historias = $this->getCtrModel()->historiaPaciente($ccP);
-       // $this->getCtrVista()->renderD("odontologo","atenderPaciente");
+        $this->getCtrVista()->renderD("odontologo","atenderPaciente");
         //header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/atender");
     }
 

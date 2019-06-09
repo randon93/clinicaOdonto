@@ -16,12 +16,11 @@ class OdontologoModel extends Modelo {
           $consultarr = $con -> prepare($sqll);
           $consultarr -> execute( array(":numeroC"=>$cita['numero_cita']) );
           foreach ($consultarr as $historia) {
-              if ( $historia['numero_cita'] != $cita['numero_cita'] ) { echo "<h1 style='background: red;'> ENTRE PUTAS </H1>";
-                array_push($historias, $historia);
-              }              
+           // print_r($historias);
+              array_push($historias, $historia);
           }
-        } 
-        print_r($historias);
+        }
+        $con = $this->cerrarCon(); 
         return $historias;
     }
 
@@ -38,9 +37,8 @@ class OdontologoModel extends Modelo {
         $consultar = $con->prepare($sql);
         $consultar->execute( array(":numero_cita"=>$cit['numero_cita'], ":fecha_asignada"=>$cit['fecha_asignada'], ":descripcion"=>$descripcion) );        
       // }
-      }
-      
-      
+      }     
+      $con = $this->cerrarCon();
 
     }
 
@@ -49,8 +47,10 @@ class OdontologoModel extends Modelo {
       $sql = $con -> prepare("SELECT * FROM atencion_cita WHERE numero_cita = :cita");
       $sql -> execute( array(":cita"=>$cita) );
       foreach ($sql as $value) {
+        $con = $this->cerrarCon();
         return true;
       }
+      $con = $this->cerrarCon();
       return false;
     }
 }

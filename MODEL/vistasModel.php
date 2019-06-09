@@ -17,6 +17,7 @@ class VistasModel extends Modelo{
       $consul = new Consultorio($consultorio['id'], $consultorio['nombre'], $consultorio['direccion'], $consultorio['correo'], $consultorio['telefono'], $consultorio['cedula_o']);
       array_push($consultorios, $consul);
     }
+    $con = $this->cerrarCon();
     return $consultorios;
   }
 
@@ -39,6 +40,7 @@ public function pacientes(){
         }
     }
     // print_r($pacientes);
+    $con = $this->cerrarCon();
     return $pacientes;
 }
 
@@ -47,8 +49,10 @@ public function buscarPa($cedula){
   $consulta = $con->prepare("SELECT * FROM paciente WHERE cedula = :cedula");
   $consulta -> execute( array(":cedula"=>$cedula) );
   foreach ($consulta as $pac) {
+    $con = $this->cerrarCon();
     return true;
   }
+  $con = $this->cerrarCon();
   return false;
 }
 
@@ -63,7 +67,39 @@ public function citas(){
     $cit->crear($cita['fecha_solicitud'], $cita['cedula_p'], $cita['id_consultorio'], $cita['fecha_asignada'], $cita['numero_cita']);
     array_push($citas, $cit);
   }
+  $con = $this->cerrarCon();
   return $citas;  
+}
+
+public function atendidas(){
+  $con = $this->bd->conectar();
+  $atendidas = [];
+  $sql = "SELECT * FROM atencion_cita";
+  $consultar = $con -> prepare($sql);
+  $consultar -> execute();
+  $cont = 0;
+  foreach ($consultar as $atendida) {
+    array_push($atendidas, $atendida);
+  }  
+  $con = $this->cerrarCon();
+  return $atendidas;
+}
+
+public function citas_atendidas(){
+  $sql = "SELECT * FROM cita c WHERE c.numero_cita NOT IN ( (SELECT c.numero_cita FROM cita c INNER JOIN atencion_cita atc ON c.numero_cita = atc.numero_cita) )";  
+  $con = $this->bd->conectar();
+  $consultar = $con -> prepare($sql);
+  $consultar -> execute();
+  $array = [];
+  $i = 0;
+  foreach ($consultar as $cons) {//echo $i; 
+   // print_r($cons);
+    array_push($array, $cons);
+    //$i ++;   
+    
+  }
+ //print_r($array);
+  return $array;
 }
 
 public function odontologos(){
@@ -84,6 +120,7 @@ public function odontologos(){
       }
     }
   }
+  $con = $this->cerrarCon();
   return $odontologos;
 }
 
@@ -98,6 +135,7 @@ public function personas(){
       $consul->crear($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
       array_push($personas, $consul);
     }
+    $con = $this->cerrarCon();
     return $consultorios;
 }
 

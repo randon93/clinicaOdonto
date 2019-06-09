@@ -32,23 +32,26 @@ class VistasControlador extends Controlador{
     $this->getCtrVista()->render("error");
   }
 
-  public function odontologo()  {
+  public function odontologo()  { "entre";
     $consultorios = $this->getCtrModel()->consultorios();
+    $atendidas = $this->getCtrModel()->citas_atendidas();
+   // $citas = $this->getCtrModel()->citas(); 
     $citasA = [];
-    foreach ($consultorios as $consultorio) { //echo "entre-- ";
-      if ( strcmp($consultorio->getCedula_o(), $_SESSION['USER']->getId()) == 0 ) {//echo "**entre 2" ;
-        $citas = $this->getCtrModel()->citas();
-        foreach ($citas as $cita) {//echo "entre 3";
-          if ( strcmp($cita->getId_consultorio(), $consultorio->getId()) == 0 ) {//echo "entre 4";
-            array_push($citasA, $cita);
-          }
-        }
-      }
-       // break;
+    foreach ($consultorios as $consultorio) { 
+      if ( strcmp($consultorio->getCedula_o(), $_SESSION['USER']->getId()) == 0 ) {//echo " **entre 2**" ;
+          foreach ($atendidas as $ant) {
+           
+            if ($consultorio->getId() == $ant['id_consultorio']) {
+              array_push($citasA, $ant);
+              
+            }
+          }   
+      } 
+     // print_r($citasA);
+      $this->getCtrVista()->citass = $citasA;
+      $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();
+      $this->getCtrVista()->renderD("odontologo", "odontologo");
     }
-    $this->getCtrVista()->citass = $citasA;
-    $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();
-    $this->getCtrVista()->render("odontologo");
   }
 
   public function atender()  {
