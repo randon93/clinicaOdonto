@@ -10,28 +10,48 @@ class OdontologoModel extends Modelo {
         $sql = "SELECT * FROM cita WHERE cedula_p = :cedula";
         $consultar = $con -> prepare($sql);
         $consultar -> execute( array(":cedula"=>$cedula_p) );
-        foreach ($consultar as $cita) {
+        // $cp = 0;
+        foreach ($consultar as $cita) { 
           $sqll = "SELECT * FROM atencion_cita WHERE numero_cita = :numeroC";
           $consultarr = $con -> prepare($sqll);
           $consultarr -> execute( array(":numeroC"=>$cita['numero_cita']) );
           foreach ($consultarr as $historia) {
-              array_push($historias, $historia);
+              if ( $historia['numero_cita'] != $cita['numero_cita'] ) { echo "<h1 style='background: red;'> ENTRE PUTAS </H1>";
+                array_push($historias, $historia);
+              }              
           }
-        }
+        } 
+        print_r($historias);
         return $historias;
     }
 
     public function agregarHistoria($cita, $descripcion)    {
-      $fecha_actual = new DateTime(date("d-m-Y"));
-      $fecha_entrada = new DateTime( $cita->getFecha_asignada() );
-      if ($fecha_actual->diff($fecha_entrada) == 0) {
-        $con = $this->bd->conectar();
+      $con = $this->bd->conectar();
+      $sqll = "SELECT * FROM cita WHERE numero_cita = :cita";
+      $consultarr = $con -> prepare($sqll);
+      $consultarr -> execute( array(":cita"=>$cita) );
+      foreach ($consultarr as $cit) {
+        $fecha_actual = new DateTime(date("d-m-Y"));
+        $fecha_entrada = new DateTime( $cit['fecha_asignada'] );
+        // if ($fecha_actual == $fecha_entrada) {        
         $sql = "INSERT INTO atencion_cita (numero_cita, fecha_asignada, descripcion) VALUES (:numero_cita, :fecha_asignada, :descripcion)";
         $consultar = $con->prepare($sql);
-        $cosnultar->execute( array(":numero_cita"=>$cita->getNumero_cita(), ":fecha_asignada"=>$cita->getFecha_asignada(), ":descripcion"=>$descripcion) );
-
+        $consultar->execute( array(":numero_cita"=>$cit['numero_cita'], ":fecha_asignada"=>$cit['fecha_asignada'], ":descripcion"=>$descripcion) );        
+      // }
       }
+      
+      
 
+    }
+
+    public function buscarHistoria($cita)    {
+      $con = $this->bd->conectar();
+      $sql = $con -> prepare("SELECT * FROM atencion_cita WHERE numero_cita = :cita");
+      $sql -> execute( array(":cita"=>$cita) );
+      foreach ($sql as $value) {
+        return true;
+      }
+      return false;
     }
 }
 // $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));

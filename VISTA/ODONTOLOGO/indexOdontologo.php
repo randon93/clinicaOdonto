@@ -24,7 +24,11 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($this->citass as $cita){?>
+                <?php foreach($this->citass as $cita){ 
+                  $date1 = new DateTime( date("Y-m-d") );
+                  $date2 = new DateTime( $cita->getFecha_asignada() ); 
+                  if ( $date1 <= $date2 ) {          
+                  ?>
                 <tr>
                     <th scope="row"><?php echo $cita->getNumero_cita();?></th>
                     <td><?php
@@ -36,9 +40,9 @@
                              }
                      ?></td>
                     <td>@<?php echo $cita->getFecha_asignada();?></td>
-                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?cita=<?php echo $cita->getCedula_p()."&&paci=".$this->pac;?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
+                    <td> <a href="<?php echo constant('URL');?>odontologo/mostrarHistorial?ccP=<?php $array = array( 'paciente'=>$this->pac, 'cita'=>$cita->getNumero_cita() );  echo $cita->getCedula_p()."&&paci=". urlencode(serialize($array));?>"><button type="button" class="btn btn-danger" >Atendida</button></a></td>
                 </tr>
-                <?php }?>
+                <?php }}?>
             </tbody>
         </table>
     </div>
