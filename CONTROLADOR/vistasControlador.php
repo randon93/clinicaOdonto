@@ -17,10 +17,11 @@ class VistasControlador extends Controlador{
   }
 
   public function administrador()  {
-    $this->getCtrVista()->citas = $this->getCtrModel()->citas();
+    $this->getCtrVista()->citas = $this->getCtrModel()->citas_atendidas();
     $this->getCtrVista()->pacientes = $this->getCtrModel()->pacientes();
     $this->getCtrVista()->consultorios = $this->getCtrModel()->consultorios();
     $this->getCtrVista()->odontologos = $this->getCtrModel()->odontologos();
+    //$this->getCtrVista()->atendidas = $this->getCtrModel()->citas_atendidas();
     $this->getCtrVista()->render("administrador");
   }
 

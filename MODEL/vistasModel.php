@@ -86,7 +86,7 @@ public function atendidas(){
 }
 
 public function citas_atendidas(){
-  $sql = "SELECT * FROM cita c WHERE c.numero_cita NOT IN ( (SELECT c.numero_cita FROM cita c INNER JOIN atencion_cita atc ON c.numero_cita = atc.numero_cita) )";  
+  $sql = "SELECT * FROM cita c WHERE c.numero_cita NOT IN ( (SELECT c.numero_cita FROM cita c INNER JOIN atencion_cita atc ON c.numero_cita = atc.numero_cita)  )";  
   $con = $this->bd->conectar();
   $consultar = $con -> prepare($sql);
   $consultar -> execute();
@@ -137,6 +137,10 @@ public function personas(){
     }
     $con = $this->cerrarCon();
     return $consultorios;
+}
+
+public function eliminarCita($numero_cita){
+  $sql = "";
 }
 
 }

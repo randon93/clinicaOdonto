@@ -7,10 +7,10 @@ class administradorControlador extends Controlador{
     echo "<h3>Hola Controlador de administrador</h3>";
   }
 
-  public function eliminar()  {
-    $paciente = $_GET['paciente'];
-    $this->getCtrModel()->eliminar($paciente);
-    echo "<script>alert('PACIENTE ELIMINADO ');</script>";
+  public function eliminarCita()  {
+    $numero_cita = $_GET['numero_cita'];
+    $this->getCtrModel()->eliminarCita($numero_cita);
+    echo "<script>alert('CITA ELIMINADO ');</script>";
   }
 
   public function resgistrarPaciente()  {
@@ -20,6 +20,7 @@ class administradorControlador extends Controlador{
     $password = $_POST['password'];
     $telefono = $_POST['telefono'];
     $this->getCtrModel()->resgistrarPaciente($cedula, $nombre, $correo, $telefono, $password);
+    header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/administrador");
   }
 
 }

@@ -43,8 +43,7 @@ class AdministradorModel extends Modelo{
         $consultar = $con -> prepare($sql);
         $consultar -> execute();
         $con =  $this->cerrarCon();
-    }
-    $con = $this->cerrarCon();
+    }    
   }
 
   public function agregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asignada)  {
