@@ -9,6 +9,8 @@ class VistasControlador extends Controlador{
 
   public function paciente()  {
     $this->getCtrVista()->consultorios = $this->getCtrModel()->consultorios();
+    $this->getCtrVista()->citas = $this->getCtrModel()->citas();
+    $this->getCtrVista()->atendidas = $this->getCtrModel()->citas_atendidas();
     $this->getCtrVista()->render("paciente");
   }
 

@@ -42,5 +42,13 @@ class PacienteControlador extends Controlador{
   public function buscarPersona($cedudla)  {
     return  $this->getCtrModel()->buscarPersona($cedula);
   }
+
+  public function eliminarCita()  {
+    $numero_cita = $_GET['numero_cita'];
+    $this->getCtrModel()->eliminarCita($numero_cita);
+    echo "<script>alert('CITA ELIMINADO ');</script>";
+    header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/paciente");
+  }
+
 }
  ?>

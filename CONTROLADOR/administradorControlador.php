@@ -11,6 +11,7 @@ class administradorControlador extends Controlador{
     $numero_cita = $_GET['numero_cita'];
     $this->getCtrModel()->eliminarCita($numero_cita);
     echo "<script>alert('CITA ELIMINADO ');</script>";
+    header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/administrador");
   }
 
   public function resgistrarPaciente()  {

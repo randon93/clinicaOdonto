@@ -150,7 +150,7 @@
                                     <td><?php echo $cita['fecha_solicitud'];?></td>
                                     <td>@<?php echo $cita['fecha_asignada'];?></td>
                                     <td>@<?php echo $cita['id_consultorio'];?></td>
-                                    <td> <button type="button" class="btn btn-danger">Eleminar</button></td>
+                                    <td> <a href="<?php echo constant('URL');?>administrador/eliminarcita?numero_cita=<?php echo $cita['numero_cita']; ?>"><button type="button" class="btn btn-danger">EleminarC</button></a></td>
                                 </tr>
                                 <?php }?>
                             </tbody>

@@ -57,6 +57,14 @@ class PacienteModel extends Modelo{
     $con = $this->cerrarCon();
   }
 
+  public function eliminarCita($numero_cita){ echo $numero_cita;
+  //$numero_cita = $_GET['cita'];
+  $sql = "DELETE FROM cita WHERE numero_cita = :cita";
+  $con = $this->bd->conectar();
+  $consultar = $con -> prepare($sql);
+  $consultar -> execute( array(":cita"=>$numero_cita) );
+}
+
 
 }
  ?>
