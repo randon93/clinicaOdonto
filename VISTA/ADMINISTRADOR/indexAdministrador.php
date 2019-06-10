@@ -103,7 +103,7 @@
                                                 <td><?php echo $paciente->getNombre();?></td>
                                                 <td><?php echo $paciente->getTelefono();?></td>
                                                 <td>@<?php echo $paciente->getCorreo();?></td>
-                                                <td> <button type="button" class="btn btn-danger">Eleminar</button></td>
+                                                <!-- <td> <button type="button" class="btn btn-danger">Eleminar</button></td> -->
                                             </tr>
                                             <?php }?>
                                         </tbody>
@@ -189,12 +189,12 @@
                                                 <td><?php echo $consultorio->getNombre();?></td>
                                                 <td><?php echo $consultorio->getTelefono();?></td>
                                                 <td>@<?php echo $consultorio->getCorreo();?></td>
-                                                <td><?php 
+                                                <td><?php
                                                     foreach ($this->odontologos as $odonto) {
                                                        if( strcmp($consultorio->getCedula_o(), $odonto->getId()) == 0 ){
                                                             echo $odonto->getNombre();
                                                             return;
-                                                       } 
+                                                       }
                                                     }
                                                     ?></td>
                                                 <td> <button type="button" class="btn btn-danger">Eleminar</button></td>

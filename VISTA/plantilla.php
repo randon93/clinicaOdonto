@@ -42,13 +42,13 @@
           require_once "$carpeta/index$vista.php";
        ?>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-md-4 mt-4" ><img src="<?php echo constant('URL');?>PUBLIC/IMAGENES/diente.jpg" style="width: 300px; height:300px;" alt=""></div>
       <div class="col-md-4 mt-4" ><img src="<?php echo constant('URL');?>PUBLIC/IMAGENES/diente2.jpg" style="width: 300px; height:300px;" alt=""></div>
       <div class="col-md-4 mt-4" ><img src="<?php echo constant('URL');?>PUBLIC/IMAGENES/diente3.jpg" style="width: 300px; height:300px;" alt=""></div>
     </div>
-  </div>
+  </div> -->
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="<?php echo constant('URL');?>PUBLIC/js/bootstrap.bundle.js"></script>
