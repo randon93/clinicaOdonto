@@ -43,7 +43,27 @@ class AdministradorModel extends Modelo{
         $consultar = $con -> prepare($sql);
         $consultar -> execute();
         $con =  $this->cerrarCon();
-    }    
+    }
+  }
+
+  public function resgistrarOdontologo($cedula, $nombre, $correo, $telefono, $password)  {
+    if ( $this->registrarPersona($cedula, $nombre, $correo, $telefono) ) {
+        $sql = "INSERT INTO odontologo (cedula, password) VALUES ( $cedula, $password )";
+        $con = $this->bd->conectar();
+        $consultar = $con -> prepare($sql);
+        $consultar -> execute();
+        $con =  $this->cerrarCon();
+    }
+  }
+
+  public function resgistrarConsultorio($odonto, $nombre, $correo, $direccion, $telefono)  {
+    // if ( $this->registrarPersona($cedula, $nombre, $correo, $telefono) ) {
+        $sql = "INSERT INTO `colsultorio`(`nombre`, `direccion`, `correo`, `telefono`, `cedula_o`) VALUES ( :nombre, :direccion, :correo, :telefono, :cedula)";
+        $con = $this->bd->conectar();
+        $consultar = $con -> prepare($sql);
+        $consultar -> execute( array(":nombre"=>$nombre, ":direccion"=>$direccion, ":correo"=>$correo, ":telefono"=>$telefono, ":cedula"=>$odonto) );
+        $con =  $this->cerrarCon();
+    // }
   }
 
   public function agregarCita($fecha_solicitud, $cedula_p, $id_consultorio, $fecha_asignada)  {

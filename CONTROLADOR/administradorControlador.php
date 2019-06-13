@@ -24,6 +24,26 @@ class administradorControlador extends Controlador{
     header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/administrador");
   }
 
+  public function resgistrarOdontologo()  {
+    $cedula = $_POST['cedula'];
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    $password = $_POST['password'];
+    $telefono = $_POST['telefono'];
+    $this->getCtrModel()->resgistrarOdontologo($cedula, $nombre, $correo, $telefono, $password);
+    header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/administrador");
+  }
+
+  public function resgistrarConsultorio()  {
+    $odonto = $_POST['odonto'];
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $this->getCtrModel()->resgistrarConsultorio($odonto, $nombre, $correo, $direccion, $telefono);
+    header("Location:  http://127.0.0.1/clinicaOdonto/VISTAS/administrador");
+  }
+
 }
 
  ?>

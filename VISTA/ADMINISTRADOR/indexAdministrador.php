@@ -58,6 +58,126 @@
         </div>
     </div>
 </div>
+<!-- MODAL DE CREAR odontologo -->
+<div class="modal fade" id="OdontoL" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Estas Agregando un ODONTOLOGO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo constant('URL');?>ADMINISTRADOR/resgistrarOdontologo" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Cedula</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter Cedula" name="cedula">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                            name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter Nombre" name="nombre">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Correo</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email" name="correo">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Telefono</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter Telefono" name="telefono">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL DE CREAR odontologo -->
+<div class="modal fade" id="Consult" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Estas Agregando un Cpnsultorio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo constant('URL');?>ADMINISTRADOR/resgistrarConsultorio" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter Cedula" name="nombre">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Direccion</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                            name="direccion">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Odontologo</label>
+                      <select class="" name="odonto">
+                        <?php
+                            foreach ($this->odontologos as $odonto) {
+                              echo "<option value='".$odonto->getId()."'> ".$odonto->getNombre()." </option>";
+                            }
+                            ?>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Correo</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email" name="correo">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Telefono</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter Telefono" name="telefono">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-4">
         <div class="list-group">
@@ -179,7 +299,7 @@
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Telefono</th>
                                                 <th scope="col">Correo</th>
-                                                <th scope="col">Odontologo</th>
+                                                <!-- <th scope="col">Odontologo</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -193,11 +313,11 @@
                                                     foreach ($this->odontologos as $odonto) {
                                                        if( strcmp($consultorio->getCedula_o(), $odonto->getId()) == 0 ){
                                                             echo $odonto->getNombre();
-                                                            return;
+                                                            break;
                                                        }
                                                     }
                                                     ?></td>
-                                                <td> <button type="button" class="btn btn-danger">Eleminar</button></td>
+                                                <!-- <td> <button type="button" class="btn btn-danger">Eleminar</button></td> -->
                                             </tr>
                                             <?php }?>
                                         </tbody>
@@ -205,9 +325,11 @@
                                 </div>
                                 <div class="col-md-2">
                                     <!-- <a href="<?php echo constant('URL');?>ODONTOLOGO/resgistrarPaciente"> -->
-                                        <button type="button" class="btn btn-secondary" data-toggle="modal"
-                                            data-target="#exampleModalCenter">Agregar Consultorio</button>
+                                    <button type="button" class="btn btn-secondary m-2 p-2" data-toggle="modal"
+                                            data-target="#OdontoL">Agregar Odontologo</button>
                                     <!-- </a> -->
+                                    <button type="button" class="btn btn-secondary m-2 p-2" data-toggle="modal"
+                                        data-target="#Consult">Agregar Consultorio</button>
                                 </div>
                             </div>
                         </div>
