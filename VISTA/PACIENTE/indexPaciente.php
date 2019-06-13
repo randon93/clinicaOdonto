@@ -57,14 +57,16 @@
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <th scope="col">#</th>
                   <th scope="col">Paciente</th>
-                  <th scope="col">Doctor</th>
-                  <th scope="col">Fecha</th>
+                  <th scope="col">Fecha Solicitud</th>
+                  <th scope="col">Fecha Asignada</th>
+                  <th scope="col">Consultorio</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                <?php print_r($this->atendidas); foreach($this->atendidas as $cita){?>
+                <?php  foreach($this->atendidas as $cita){?>
                 <tr>
                   <th scope="row"><?php echo $cita['numero_cita'];?></th>
                   <td><?php echo $cita['cedula_p'];?></td>
