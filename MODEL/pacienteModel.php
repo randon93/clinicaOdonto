@@ -13,7 +13,7 @@ class PacienteModel extends Modelo{
     $sql = "SELECT * FROM persona WHERE cedula = :cedula";
     $con = $this->bd->conectar();
     $consulta = $con -> prepare($sql);
-    $consulta -> execute( array(":cedula"->$cedula) );
+    $consulta -> execute( array(":cedula"=>$cedula) );
     foreach ($consulta as $persona) {
       $pe = new Persona($persona['cedula'], $persona['nombre'], $persona['correo'], $persona['telefono']);
       array_push($per, $pe);
